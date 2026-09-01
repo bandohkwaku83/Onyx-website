@@ -12,11 +12,11 @@ export const BRAND = {
 } as const;
 
 export const NAV_LINKS = [
+  { href: "/shop", label: "Shop" },
   { href: "/lighting", label: "Lighting" },
   { href: "/sanitary-ware", label: "Sanitary Ware" },
   { href: "/home-solutions", label: "Home Solutions" },
-  { href: "/inspiration", label: "Inspiration" },
-  { href: "/consultation", label: "Consultation" },
+  { href: "/consultation", label: "Contact" },
 ] as const;
 
 // All image IDs verified to return HTTP 200 from Unsplash

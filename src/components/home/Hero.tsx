@@ -55,11 +55,11 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md sm:max-w-none"
         >
-          <Button href="/lighting" variant="light" fullWidth>
-            Explore Collection
+          <Button href="/shop" variant="light" fullWidth>
+            Shop Now
           </Button>
           <Button href="/consultation" variant="lightOutline" fullWidth>
-            Visit Showroom
+            Contact Us
           </Button>
         </motion.div>
       </div>

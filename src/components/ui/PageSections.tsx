@@ -127,9 +127,9 @@ export function PageCTA() {
           your project.
         </p>
         <div className="flex justify-center max-w-xs sm:max-w-none mx-auto">
-          <Button href="/consultation" variant="gold" fullWidth>
-            Book Consultation
-          </Button>
+        <Button href="/shop" variant="gold" fullWidth>
+          Shop All Products
+        </Button>
         </div>
       </RevealOnScroll>
     </section>

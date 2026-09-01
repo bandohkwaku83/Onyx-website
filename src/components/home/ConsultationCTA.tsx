@@ -28,9 +28,9 @@ export function ConsultationCTA() {
             Book an interior consultation, product consultation, or showroom
             visit with our design experts.
           </p>
-          <div className="mt-8 sm:mt-10 flex justify-center">
-            <Button href="/consultation" variant="gold" fullWidth>
-              Book Consultation
+          <div className="mt-8 sm:mt-10 flex justify-center max-w-xs sm:max-w-none mx-auto">
+            <Button href="/shop" variant="gold" fullWidth>
+              Shop Now
             </Button>
           </div>
         </RevealOnScroll>

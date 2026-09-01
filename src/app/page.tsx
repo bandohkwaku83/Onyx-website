@@ -1,17 +1,14 @@
 import { Hero } from "@/components/home/Hero";
+import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { Categories } from "@/components/home/Categories";
-import { DesignFunction } from "@/components/home/DesignFunction";
-import { Collections } from "@/components/home/Collections";
-import { ConsultationCTA, ShowroomFlow } from "@/components/home/ConsultationCTA";
+import { ConsultationCTA } from "@/components/home/ConsultationCTA";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
+      <FeaturedProducts />
       <Categories />
-      <DesignFunction />
-      <Collections />
-      <ShowroomFlow />
       <ConsultationCTA />
     </>
   );

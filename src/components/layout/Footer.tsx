@@ -16,10 +16,15 @@ export function Footer() {
 
           <div>
             <p className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-gold mb-4 sm:mb-6">
-              Collections
+              Shop
             </p>
             <ul className="space-y-2 sm:space-y-3">
-              {NAV_LINKS.slice(0, 3).map((link) => (
+              <li>
+                <Link href="/shop" className="text-sm hover:text-gold transition-colors duration-300">
+                  All Products
+                </Link>
+              </li>
+              {NAV_LINKS.slice(1, 4).map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -34,10 +39,20 @@ export function Footer() {
 
           <div>
             <p className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-gold mb-4 sm:mb-6">
-              Explore
+              Account
             </p>
             <ul className="space-y-2 sm:space-y-3">
-              {NAV_LINKS.slice(3).map((link) => (
+              <li>
+                <Link href="/cart" className="text-sm hover:text-gold transition-colors duration-300">
+                  Cart
+                </Link>
+              </li>
+              <li>
+                <Link href="/checkout" className="text-sm hover:text-gold transition-colors duration-300">
+                  Checkout
+                </Link>
+              </li>
+              {NAV_LINKS.slice(4).map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -47,14 +62,6 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/consultation"
-                  className="text-sm hover:text-gold transition-colors duration-300"
-                >
-                  Showroom Visit
-                </Link>
-              </li>
             </ul>
           </div>
 

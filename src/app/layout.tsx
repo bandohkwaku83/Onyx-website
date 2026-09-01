@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Fraunces, Sora } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CartProvider } from "@/context/CartContext";
 import { BRAND } from "@/lib/constants";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -23,14 +24,14 @@ export const metadata: Metadata = {
     template: `${BRAND.name} | %s`,
   },
   description:
-    "Premium lighting, elegant sanitary solutions, and home innovations designed for spaces that inspire. Onyx Build & Partners Limited.",
+    "Shop premium lighting, sanitary ware, and home solutions online. Onyx Build & Partners — order for delivery across Accra, Ghana.",
   keywords: [
     "lighting",
     "sanitary ware",
     "home solutions",
-    "luxury bathrooms",
-    "interior design",
+    "online shop",
     "Ghana",
+    "Accra",
   ],
 };
 
@@ -38,12 +39,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${sora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
