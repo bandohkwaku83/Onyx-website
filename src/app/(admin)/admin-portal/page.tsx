@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
 import { useAdminAuth } from "@/context/AdminAuthContext";
-import { DEMO_ADMIN } from "@/lib/admin/data";
 import { BRAND, IMAGES, LOGO } from "@/lib/constants";
 import { AdminButton } from "@/components/admin/ui/AdminButton";
 import { Field, TextInput } from "@/components/admin/ui/FormFields";
@@ -13,7 +12,7 @@ import { Field, TextInput } from "@/components/admin/ui/FormFields";
 export default function AdminLoginPage() {
   const router = useRouter();
   const { session, ready, login } = useAdminAuth();
-  const [email, setEmail] = useState<string>(DEMO_ADMIN.email);
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(true);
@@ -115,7 +114,7 @@ export default function AdminLoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@onyxbuild.com"
+                placeholder="you@company.com"
               />
             </Field>
 
@@ -173,15 +172,6 @@ export default function AdminLoginPage() {
               Login
             </AdminButton>
           </form>
-
-          <div className="mt-6 border border-charcoal/10 bg-white px-3.5 py-3 text-xs leading-relaxed text-stone">
-            <p className="text-[10px] tracking-[0.14em] text-charcoal/70 uppercase">
-              Demo credentials
-            </p>
-            <p className="mt-1.5">
-              {DEMO_ADMIN.email} · {DEMO_ADMIN.password}
-            </p>
-          </div>
 
           <p className="mt-8 text-center text-xs text-stone">
             <Link href="/" className="transition hover:text-charcoal">
