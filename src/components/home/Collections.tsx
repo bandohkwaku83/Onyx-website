@@ -48,10 +48,10 @@ export function Collections() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8">
-                  <h3 className="font-serif text-2xl sm:text-3xl text-ivory font-light group-hover:text-gold transition-colors duration-300">
+                  <h3 className="font-serif text-2xl sm:text-3xl text-ivory font-light group-hover:text-white transition-colors duration-300">
                     {col.title}
                   </h3>
-                  <span className="inline-block mt-1 sm:mt-2 text-[10px] sm:text-xs tracking-[0.15em] uppercase text-ivory/60 group-hover:text-gold transition-colors duration-300">
+                  <span className="inline-block mt-1 sm:mt-2 text-[10px] sm:text-xs tracking-[0.15em] uppercase text-ivory/60 group-hover:text-white transition-colors duration-300">
                     View Collection &rarr;
                   </span>
                 </div>

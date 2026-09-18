@@ -40,8 +40,8 @@ export function AddToCartButton({ product, className = "" }: AddToCartButtonProp
         onClick={handleClick}
         className={`flex-1 py-3.5 text-xs sm:text-sm tracking-[0.15em] uppercase transition-all duration-300 ${
           added
-            ? "bg-gold text-charcoal"
-            : "bg-charcoal text-ivory hover:bg-gold hover:text-charcoal"
+            ? "bg-primary text-ivory"
+            : "bg-primary text-ivory hover:bg-charcoal"
         } ${className}`}
       >
         {added ? "Added to Cart ✓" : "Add to Cart"}
@@ -49,7 +49,7 @@ export function AddToCartButton({ product, className = "" }: AddToCartButtonProp
       {added && (
         <Link
           href="/cart"
-          className="flex-1 py-3.5 text-center text-xs sm:text-sm tracking-[0.15em] uppercase border border-charcoal/20 text-charcoal hover:border-gold hover:text-gold transition-colors duration-300"
+          className="flex-1 py-3.5 text-center text-xs sm:text-sm tracking-[0.15em] uppercase border border-charcoal/20 text-charcoal hover:border-primary hover:text-primary transition-colors duration-300"
         >
           View Cart
         </Link>
@@ -72,7 +72,7 @@ export function BuyNowButton({ product }: { product: Product }) {
     <button
       type="button"
       onClick={handleBuyNow}
-      className="w-full py-3.5 text-xs sm:text-sm tracking-[0.15em] uppercase border border-charcoal/30 text-charcoal hover:border-gold hover:text-gold transition-colors duration-300"
+      className="w-full py-3.5 text-xs sm:text-sm tracking-[0.15em] uppercase border border-charcoal/30 text-charcoal hover:border-primary hover:text-primary transition-colors duration-300"
     >
       Order Now — {formatPrice(product.price)}
     </button>

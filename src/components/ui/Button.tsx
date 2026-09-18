@@ -20,17 +20,17 @@ export function Button({
 
   const variants = {
     primary:
-      "bg-charcoal text-ivory hover:bg-gold hover:text-charcoal",
+      "bg-primary text-ivory hover:bg-charcoal",
     outline:
-      "border border-charcoal/30 text-charcoal hover:border-gold hover:text-gold",
+      "border border-charcoal/30 text-charcoal hover:border-primary hover:text-primary",
     ghost:
-      "text-charcoal hover:text-gold underline-offset-4 hover:underline",
+      "text-charcoal hover:text-primary underline-offset-4 hover:underline",
     light:
-      "bg-ivory text-charcoal hover:bg-gold hover:text-charcoal",
+      "bg-ivory text-charcoal hover:bg-primary hover:text-ivory",
     lightOutline:
-      "border border-ivory/40 text-ivory hover:border-gold hover:text-gold",
+      "border border-ivory/40 text-ivory hover:border-ivory hover:bg-ivory/10",
     gold:
-      "bg-gold text-charcoal hover:bg-ivory",
+      "bg-primary text-ivory hover:bg-charcoal",
   };
 
   const widthClass = fullWidth ? "w-full" : "w-full sm:w-auto";

@@ -2,11 +2,12 @@ import Link from "next/link";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProductGrid } from "@/components/shop/ProductGrid";
-import { PRODUCTS } from "@/lib/products";
+import { getStoreProducts } from "@/lib/db/products";
 
-const featured = PRODUCTS.slice(0, 8);
+export async function FeaturedProducts() {
+  const products = await getStoreProducts();
+  const featured = products.slice(0, 8);
 
-export function FeaturedProducts() {
   return (
     <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">

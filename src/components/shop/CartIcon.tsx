@@ -9,7 +9,7 @@ export function CartIcon() {
   return (
     <Link
       href="/cart"
-      className="relative p-2 text-ivory hover:text-gold transition-colors duration-300"
+      className="relative p-2 text-ivory hover:text-white transition-colors duration-300"
       aria-label={`Cart with ${itemCount} items`}
     >
       <svg
@@ -27,7 +27,7 @@ export function CartIcon() {
         />
       </svg>
       {itemCount > 0 && (
-        <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center bg-gold text-charcoal text-[10px] font-medium rounded-full px-1">
+        <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center bg-red-600 text-white text-[10px] font-medium rounded-full px-1">
           {itemCount > 99 ? "99+" : itemCount}
         </span>
       )}

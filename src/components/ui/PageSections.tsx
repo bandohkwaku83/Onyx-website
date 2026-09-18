@@ -24,7 +24,7 @@ export function PageHero({ title, subtitle, image, eyebrow }: PageHeroProps) {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-20 pt-24">
         {eyebrow && (
-          <p className="text-gold text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-4">
+          <p className="text-ivory/80 text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-4">
             {eyebrow}
           </p>
         )}
@@ -117,7 +117,7 @@ export function CategoryGrid({ items }: CategoryGridProps) {
 
 export function PageCTA() {
   return (
-    <section className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-charcoal text-center">
+    <section className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-primary text-center">
       <RevealOnScroll>
         <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-light text-ivory mb-4 sm:mb-6 px-2">
           Ready to Transform Your Space?

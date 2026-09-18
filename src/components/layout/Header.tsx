@@ -35,7 +35,7 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-white/10 backdrop-blur-xl ${
-        scrolled || menuOpen ? "bg-charcoal/70 shadow-lg" : "bg-charcoal/45"
+        scrolled || menuOpen ? "bg-primary/80 shadow-lg" : "bg-primary/55"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,7 +58,7 @@ export function Header() {
                 href={link.href}
                 className={`text-xs tracking-[0.12em] uppercase transition-colors duration-300 ${
                   isActive(link.href)
-                    ? "text-gold"
+                    ? "text-white"
                     : "text-ivory/85 hover:text-ivory"
                 }`}
               >
@@ -101,13 +101,13 @@ export function Header() {
           menuOpen ? "max-h-[100dvh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="px-4 sm:px-6 pb-6 pt-2 flex flex-col gap-1 border-t border-white/10 bg-charcoal/90 backdrop-blur-xl max-h-[calc(100dvh-4rem)] overflow-y-auto">
+        <nav className="px-4 sm:px-6 pb-6 pt-2 flex flex-col gap-1 border-t border-white/10 bg-primary/95 backdrop-blur-xl max-h-[calc(100dvh-4rem)] overflow-y-auto">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={`text-sm tracking-[0.12em] uppercase py-3 border-b border-white/5 ${
-                isActive(link.href) ? "text-gold" : "text-ivory/85"
+                isActive(link.href) ? "text-white" : "text-ivory/85"
               }`}
             >
               {link.label}
@@ -115,7 +115,7 @@ export function Header() {
           ))}
           <Link
             href="/cart"
-            className="mt-4 text-center text-sm tracking-[0.15em] uppercase py-3.5 bg-gold text-charcoal"
+            className="mt-4 text-center text-sm tracking-[0.15em] uppercase py-3.5 bg-ivory text-primary"
           >
             View Cart
           </Link>

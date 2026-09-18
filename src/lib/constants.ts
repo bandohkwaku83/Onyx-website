@@ -12,10 +12,8 @@ export const BRAND = {
 } as const;
 
 export const NAV_LINKS = [
+  { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
-  { href: "/lighting", label: "Lighting" },
-  { href: "/sanitary-ware", label: "Sanitary Ware" },
-  { href: "/home-solutions", label: "Home Solutions" },
   { href: "/consultation", label: "Contact" },
 ] as const;
 

@@ -22,7 +22,7 @@ export function SectionHeading({
       {eyebrow && (
         <p
           className={`text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-4 ${
-            light ? "text-gold" : "text-stone"
+            light ? "text-ivory/70" : "text-stone"
           }`}
         >
           {eyebrow}

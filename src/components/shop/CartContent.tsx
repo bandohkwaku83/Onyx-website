@@ -87,7 +87,7 @@ export function CartContent() {
         </p>
         <Link
           href="/shop"
-          className="inline-flex px-8 py-3.5 text-sm tracking-[0.15em] uppercase bg-charcoal text-ivory hover:bg-gold hover:text-charcoal transition-all duration-300"
+          className="inline-flex px-8 py-3.5 text-sm tracking-[0.15em] uppercase bg-primary text-ivory hover:bg-charcoal transition-all duration-300"
         >
           Shop Now
         </Link>
@@ -127,7 +127,7 @@ export function CartContent() {
           </div>
           <Link
             href="/checkout"
-            className="block w-full py-3.5 text-center text-sm tracking-[0.15em] uppercase bg-charcoal text-ivory hover:bg-gold hover:text-charcoal transition-all duration-300"
+            className="block w-full py-3.5 text-center text-sm tracking-[0.15em] uppercase bg-primary text-ivory hover:bg-charcoal transition-all duration-300"
           >
             Proceed to Checkout
           </Link>

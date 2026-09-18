@@ -3,18 +3,22 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { BRAND, IMAGES } from "@/lib/constants";
+import { useWebsiteContent } from "@/context/WebsiteContentContext";
 
 export function Hero() {
+  const { content } = useWebsiteContent();
+  const hero = content.homeHero;
+
   return (
     <section className="relative min-h-[100svh] flex items-end overflow-hidden">
       <Image
-        src={IMAGES.hero}
+        src={hero.image}
         alt="Luxury modern living room with designer lighting"
         fill
         priority
         className="object-cover"
         sizes="100vw"
+        unoptimized={hero.image.startsWith("blob:")}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-charcoal/40" />
 
@@ -23,9 +27,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-gold text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-4 sm:mb-6 max-w-xs sm:max-w-none leading-relaxed"
+          className="text-ivory/80 text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-4 sm:mb-6 max-w-xs sm:max-w-none leading-relaxed"
         >
-          {BRAND.categories}
+          {hero.eyebrow}
         </motion.p>
 
         <motion.h1
@@ -34,9 +38,9 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-ivory leading-[1.08] max-w-4xl"
         >
-          Redefining
+          {hero.heading}
           <br />
-          <span className="italic">Modern Living</span>
+          <span className="italic">{hero.headingAccent}</span>
         </motion.h1>
 
         <motion.p
@@ -45,8 +49,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-5 sm:mt-8 text-base sm:text-lg md:text-xl text-ivory/70 font-light max-w-xl leading-relaxed"
         >
-          Premium lighting, elegant sanitary solutions, and home innovations
-          designed for spaces that inspire.
+          {hero.description}
         </motion.p>
 
         <motion.div
@@ -56,10 +59,10 @@ export function Hero() {
           className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md sm:max-w-none"
         >
           <Button href="/shop" variant="light" fullWidth>
-            Shop Now
+            {hero.primaryCta}
           </Button>
           <Button href="/consultation" variant="lightOutline" fullWidth>
-            Contact Us
+            {hero.secondaryCta}
           </Button>
         </motion.div>
       </div>
@@ -74,7 +77,7 @@ export function Hero() {
           <motion.div
             animate={{ y: ["-100%", "100%"] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-x-0 h-1/2 bg-gold"
+            className="absolute inset-x-0 h-1/2 bg-ivory"
           />
         </div>
       </motion.div>

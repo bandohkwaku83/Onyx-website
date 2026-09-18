@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Sora } from "next/font/google";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { CartProvider } from "@/context/CartContext";
+import { WebsiteContentProvider } from "@/context/WebsiteContentContext";
 import { BRAND } from "@/lib/constants";
 import "./globals.css";
 
@@ -42,11 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${sora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <CartProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </CartProvider>
+        <WebsiteContentProvider>{children}</WebsiteContentProvider>
       </body>
     </html>
   );

@@ -5,7 +5,7 @@ import { IMAGES } from "@/lib/constants";
 
 export function DesignFunction() {
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-charcoal text-ivory">
+    <section className="py-16 sm:py-24 md:py-32 bg-primary text-ivory">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Our Philosophy"
@@ -48,8 +48,8 @@ export function DesignFunction() {
                 direction="right"
                 className="sm:last:col-span-2 lg:last:col-span-1"
               >
-                <div className="border-l border-gold/40 pl-5 sm:pl-8 h-full">
-                  <p className="text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase text-gold mb-2 sm:mb-3">
+                <div className="border-l border-ivory/30 pl-5 sm:pl-8 h-full">
+                  <p className="text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase text-ivory/70 mb-2 sm:mb-3">
                     {item.label}
                   </p>
                   <p className="font-serif text-xl sm:text-2xl md:text-3xl font-light text-ivory/90">

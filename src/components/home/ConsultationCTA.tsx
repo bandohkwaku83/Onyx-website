@@ -1,36 +1,41 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { Button } from "@/components/ui/Button";
-import { IMAGES } from "@/lib/constants";
+import { useWebsiteContent } from "@/context/WebsiteContentContext";
 
 export function ConsultationCTA() {
+  const { content } = useWebsiteContent();
+  const cta = content.homeCta;
+
   return (
     <section className="relative py-20 sm:py-32 md:py-40 overflow-hidden">
       <Image
-        src={IMAGES.showroom}
-        alt="Onyx showroom interior"
+        src={cta.image}
+        alt="Onyx consultation call to action"
         fill
         className="object-cover"
         sizes="100vw"
+        unoptimized={cta.image.startsWith("blob:")}
       />
       <div className="absolute inset-0 bg-charcoal/60" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <RevealOnScroll>
-          <p className="text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase text-gold mb-4 sm:mb-6">
-            Transform Your Space
+          <p className="text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase text-ivory/80 mb-4 sm:mb-6">
+            {cta.eyebrow}
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl font-light text-ivory leading-tight">
-            Planning Your Dream Space?
+            {cta.title}
           </h2>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg text-ivory/70 font-light leading-relaxed">
-            Book an interior consultation, product consultation, or showroom
-            visit with our design experts.
+            {cta.description}
           </p>
           <div className="mt-8 sm:mt-10 flex justify-center max-w-xs sm:max-w-none mx-auto">
             <Button href="/shop" variant="gold" fullWidth>
-              Shop Now
+              {cta.buttonLabel}
             </Button>
           </div>
         </RevealOnScroll>

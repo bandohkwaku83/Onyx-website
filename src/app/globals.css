@@ -2,16 +2,17 @@
 
 :root {
   --ivory: #f8f5ef;
-  --gold: #c9a45c;
+  --primary: #29395a;
   --charcoal: #222222;
-  --stone: #b8aa98;
+  --stone: #8a93a3;
   --background: var(--ivory);
   --foreground: var(--charcoal);
 }
 
 @theme inline {
   --color-ivory: var(--ivory);
-  --color-gold: var(--gold);
+  --color-primary: var(--primary);
+  --color-gold: var(--primary);
   --color-charcoal: var(--charcoal);
   --color-stone: var(--stone);
   --color-background: var(--background);
@@ -33,6 +34,6 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--gold) 30%, transparent);
+  background: color-mix(in srgb, var(--primary) 25%, transparent);
   color: var(--charcoal);
 }
