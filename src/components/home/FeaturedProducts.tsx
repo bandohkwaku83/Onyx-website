@@ -4,9 +4,11 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { getStoreProducts } from "@/lib/db/products";
 
+const FEATURED_COUNT = 4;
+
 export async function FeaturedProducts() {
   const products = await getStoreProducts();
-  const featured = products.slice(0, 8);
+  const featured = products.slice(0, FEATURED_COUNT);
 
   return (
     <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8">

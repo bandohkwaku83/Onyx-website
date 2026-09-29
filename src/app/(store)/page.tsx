@@ -3,6 +3,8 @@ import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { Categories } from "@/components/home/Categories";
 import { ConsultationCTA } from "@/components/home/ConsultationCTA";
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   return (
     <>
