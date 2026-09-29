@@ -16,6 +16,30 @@ type Props = {
   label?: string;
 };
 
+async function compressImage(file: File): Promise<File> {
+  const bitmap = await createImageBitmap(file);
+  const max = 1600;
+  const scale = Math.min(1, max / Math.max(bitmap.width, bitmap.height));
+  const width = Math.max(1, Math.round(bitmap.width * scale));
+  const height = Math.max(1, Math.round(bitmap.height * scale));
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Could not process this image.");
+  ctx.drawImage(bitmap, 0, 0, width, height);
+  bitmap.close();
+
+  const blob = await new Promise<Blob | null>((resolve) => {
+    canvas.toBlob(resolve, "image/jpeg", 0.82);
+  });
+  if (!blob) throw new Error("Could not process this image.");
+  if (blob.size > 4 * 1024 * 1024) {
+    throw new Error("Image is still too large. Try a smaller photo.");
+  }
+  return new File([blob], "upload.jpg", { type: "image/jpeg" });
+}
+
 export function ImageUpload({
   value,
   onChange,
@@ -24,20 +48,27 @@ export function ImageUpload({
   const inputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [error, setError] = useState<string | null>(null);
 
-  const simulateUpload = useCallback(
+  const uploadFile = useCallback(
     async (file: File) => {
       setUploading(true);
-      setProgress(0);
-      for (let i = 1; i <= 5; i++) {
-        await new Promise((r) => setTimeout(r, 120));
-        setProgress(i * 20);
+      setError(null);
+      try {
+        const prepared = await compressImage(file);
+        const body = new FormData();
+        body.append("file", prepared, "upload.jpg");
+        const res = await fetch("/api/upload", { method: "POST", body });
+        const data = (await res.json()) as { url?: string; error?: string };
+        if (!res.ok || !data.url) {
+          throw new Error(data.error || "Upload failed");
+        }
+        onChange(data.url);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Upload failed");
+      } finally {
+        setUploading(false);
       }
-      const url = URL.createObjectURL(file);
-      onChange(url);
-      setUploading(false);
-      setProgress(0);
     },
     [onChange],
   );
@@ -46,9 +77,9 @@ export function ImageUpload({
     (files: FileList | null) => {
       const file = files?.[0];
       if (!file || !file.type.startsWith("image/")) return;
-      void simulateUpload(file);
+      void uploadFile(file);
     },
-    [simulateUpload],
+    [uploadFile],
   );
 
   const onDrop = (e: DragEvent) => {
@@ -62,13 +93,15 @@ export function ImageUpload({
     e.target.value = "";
   };
 
+  const saved = Boolean(value && !value.startsWith("blob:"));
+
   return (
     <div className="space-y-2">
       <p className="text-[11px] tracking-[0.14em] text-charcoal/70 uppercase">
         {label}
       </p>
 
-      {value ? (
+      {saved && value ? (
         <div className="overflow-hidden border border-charcoal/10 bg-white">
           <div className="relative aspect-[16/10] bg-ivory">
             <Image
@@ -76,7 +109,7 @@ export function ImageUpload({
               alt="Preview"
               fill
               className="object-cover"
-              unoptimized={value.startsWith("blob:")}
+              unoptimized
             />
           </div>
           <div className="flex flex-wrap gap-2 border-t border-charcoal/8 p-3">
@@ -113,18 +146,9 @@ export function ImageUpload({
           }`}
         >
           {uploading ? (
-            <div className="w-full max-w-xs space-y-3">
-              <p className="text-[11px] tracking-[0.14em] text-charcoal uppercase">
-                Uploading…
-              </p>
-              <div className="h-px overflow-hidden bg-charcoal/10">
-                <div
-                  className="h-full bg-primary transition-all duration-150"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-              <p className="text-xs text-stone">{progress}%</p>
-            </div>
+            <p className="text-[11px] tracking-[0.14em] text-charcoal uppercase">
+              Uploading…
+            </p>
           ) : (
             <>
               <div className="mb-3 flex h-12 w-12 items-center justify-center bg-ivory text-stone">
@@ -144,7 +168,7 @@ export function ImageUpload({
                 Drag & drop an image here
               </p>
               <p className="mt-1 text-xs font-light text-stone">
-                PNG, JPG up to 5MB
+                PNG or JPG. Large photos are resized before saving.
               </p>
               <AdminButton
                 type="button"
@@ -159,6 +183,17 @@ export function ImageUpload({
           )}
         </div>
       )}
+
+      {value?.startsWith("blob:") ? (
+        <p className="text-xs text-stone">
+          This image was not saved. Upload it again so it stays on the live site.
+        </p>
+      ) : null}
+      {error ? (
+        <p className="text-xs text-red-600" role="alert">
+          {error}
+        </p>
+      ) : null}
 
       <input
         ref={inputRef}
